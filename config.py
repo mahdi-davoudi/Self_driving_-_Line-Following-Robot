@@ -1,14 +1,9 @@
 """
-Central configuration for the FIRA line-following robot.
-
 All tunable parameters (camera size, lane-detection thresholds, steering
 gains and smoothing) live here so they can be adjusted without touching
 the logic in the other modules.
 """
 
-# --------------------------------------------------------------------------- #
-# Serial / robot
-# --------------------------------------------------------------------------- #
 SERIAL_PORT = '/dev/ttyUSB0'
 SERIAL_BAUDRATE = 115200
 
@@ -16,40 +11,30 @@ SERIAL_BAUDRATE = 115200
 DEFAULT_ANGLE = 100
 DEFAULT_SPEED = 180
 
-# --------------------------------------------------------------------------- #
 # Lane detection (Hough transform)
-# --------------------------------------------------------------------------- #
 CANNY_LOW = 60
 CANNY_HIGH = 160
 HOUGH_THRESHOLD = 50           # Lowered for speed
 MIN_LINE_LENGTH = 40
 MAX_LINE_GAP = 60
 
-# --------------------------------------------------------------------------- #
 # Steering gain parameters
-# --------------------------------------------------------------------------- #
 K_MIN = 0.4
 K_MAX = 1.6
 STEER_CENTER = 100
 STEER_MIN = 55
 STEER_MAX = 135
 
-# --------------------------------------------------------------------------- #
 # Steering smoothing (applied after the steering angle is computed,
 # before the command is sent to the Arduino)
-# --------------------------------------------------------------------------- #
 STEERING_ALPHA = 0.4        # Low-pass filter (EMA) smoothing factor, 0 < alpha <= 1
 MAX_STEERING_STEP = 9        # Max degrees the servo angle may change per frame (rate limiter)
 
-# --------------------------------------------------------------------------- #
 # Frame size
-# --------------------------------------------------------------------------- #
 FRAME_WIDTH = 384
 FRAME_HEIGHT = 216
 
-# --------------------------------------------------------------------------- #
 # ROI (Region Of Interest) definitions, expressed as percentages of the frame
-# --------------------------------------------------------------------------- #
 # Right lane ROI
 ROI_TOP_RL = 0.65
 ROI_BOTTOM_RL = 1.0
@@ -74,7 +59,6 @@ APRILTAG_DETECT_EVERY_N_FRAMES = 6
 
 
 def build_vision_config() -> dict:
-    """Bundle the parameters that VisionProcessor needs into a single dict."""
     return {
         'F_Width': FRAME_WIDTH,
         'F_Height': FRAME_HEIGHT,
