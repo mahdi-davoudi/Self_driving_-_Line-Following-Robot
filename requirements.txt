@@ -1,0 +1,7 @@
+opencv-contrib-python>=4.8.0
+numpy>=1.24.0
+pyserial>=3.5
+
+# Only required on a Raspberry Pi (installed via apt on Raspberry Pi OS,
+# not available on PyPI for most other platforms):
+# picamera2
