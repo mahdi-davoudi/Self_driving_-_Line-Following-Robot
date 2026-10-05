@@ -1,0 +1,11 @@
+# dataset path
+path: .../traffic_sign/dataset
+train: images/train
+val: images/val
+
+names:
+  0: stop
+  1: right
+  2: left
+  3: straight
+  4: park
